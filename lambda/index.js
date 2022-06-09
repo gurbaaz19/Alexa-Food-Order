@@ -4,21 +4,32 @@
  * session persistence, api calls, and more.
  * */
 const Alexa = require("ask-sdk-core");
+
 var name = null;
 var phone = null;
+
 var writtenMenuFood =
-  "1) Plain Dosa 30\n2) Masala Dosa 40\n3) Chicken Fried Rice 70\n4) Chicken Triple Rice 90\n5) Veg Fried Rice 50\n6) Veg Triple Rice 65\n7) Egg Noodles 60\n8) Chicken Noodles 70\n9) Veg Noodles 50";
-var oralMenuFood =
-  "Plain Dosa 30, Masala Dosa 40, Chicken Fried Rice 70, Chicken Triple Rice 90, Veg Fried Rice 50, Veg Triple Rice 65, Egg Noodles 60, Chicken Noodles 70, Veg Noodles 50";
-var itemQuantity1 = 0,
-  itemQuantity2 = 0,
-  itemQuantity3 = 0,
-  itemQuantity4 = 0,
-  itemQuantity5 = 0,
-  itemQuantity6 = 0,
-  itemQuantity7 = 0,
-  itemQuantity8 = 0,
-  itemQuantity9 = 0;
+    "1) Masala Dosa 40\n2) Chicken Fried Rice 70\n3) Chicken Noodles 70",
+  oralMenuFood = "Masala Dosa 40, Chicken Fried Rice 70, Chicken Noodles 70",
+  writtenMenuDrinks = "1) Coke 20\n2) Sprite 20\n3) Maaza 15",
+  oralMenuDrinks = "Coke 20, Sprite 20, Maaza 15";
+
+var foodQuantity1 = 0,
+  foodQuantity2 = 0,
+  foodQuantity3 = 0,
+  drinksQuantity1 = 0,
+  drinksQuantity2 = 0,
+  drinksQuantity3 = 0,
+  gst = 0,
+  subtotal = 0,
+  total = 0;
+
+let dosa = "",
+  rice = "",
+  noodles = "",
+  coke = "",
+  sprite = "",
+  maaza = "";
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -50,7 +61,7 @@ const CustomerAuthenticationIntentHandler = {
     );
   },
   handle(handlerInput) {
-    const slotNames= handlerInput.requestEnvelope.request.intent.slots;
+    const slotNames = handlerInput.requestEnvelope.request.intent.slots;
     name = slotNames.Name.value;
     phone = slotNames.Phone.value;
     const speakOutput = `Welcome ${name}, What would you like to order: ${oralMenuFood}`;
@@ -64,22 +75,42 @@ const CustomerAuthenticationIntentHandler = {
   },
 };
 
-const OrderEatableIntentHandler = {
+const OrderFoodIntentHandler = {
   canHandle(handlerInput) {
     return (
       Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
-      Alexa.getIntentName(handlerInput.requestEnvelope) === "OrderEatableIntent"
+      Alexa.getIntentName(handlerInput.requestEnvelope) === "OrderFoodIntent"
     );
   },
   handle(handlerInput) {
-    const slotNames= handlerInput.requestEnvelope.request.intent.slots;
-    itemQuantity1= slotNames.foodQuantityOne.value;
-    if(isNaN(itemQuantity1)){
-        itemQuantity1='Ansh';
+    const slotNames = handlerInput.requestEnvelope.request.intent.slots;
+
+    foodQuantity1 = slotNames.foodQuantityOne.value;
+    foodQuantity2 = slotNames.foodQuantityTwo.value;
+    foodQuantity3 = slotNames.foodQuantityThree.value;
+
+    if (isNaN(foodQuantity1)) {
+      foodQuantity1 = 0;
+      dosa = "";
+    } else {
+      dosa = ", " + foodQuantity1 + " Masala Dosa";
     }
-    const speakOutput=itemQuantity1;
-    let cardTitle = "Menu";
-    let cardContent = itemQuantity1;
+    if (isNaN(foodQuantity2)) {
+      foodQuantity2 = 0;
+      rice = "";
+    } else {
+      rice = ", " + foodQuantity2 + " Chicken Fried Rice";
+    }
+    if (isNaN(foodQuantity3)) {
+      foodQuantity3 = 0;
+      noodles = "";
+    } else {
+      noodles = ", " + foodQuantity3 + " Chicken Noodles";
+    }
+
+    const speakOutput = `So you have ordered${dosa}${rice}${noodles}. Would you like to have some drinks? The Menu is as follows: ${oralMenuDrinks} `;
+    let cardTitle = "Thanks for ordering, the available drinks are as follows:";
+    let cardContent = writtenMenuDrinks;
     return handlerInput.responseBuilder
       .speak(speakOutput)
       .withSimpleCard(cardTitle, cardContent)
@@ -87,6 +118,76 @@ const OrderEatableIntentHandler = {
   },
 };
 
+const OrderDrinksIntentHandler = {
+  canHandle(handlerInput) {
+    return (
+      Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
+      Alexa.getIntentName(handlerInput.requestEnvelope) === "OrderDrinksIntent"
+    );
+  },
+  handle(handlerInput) {
+    const slotNames = handlerInput.requestEnvelope.request.intent.slots;
+
+    drinksQuantity1 = slotNames.drinksQuantityOne.value;
+    drinksQuantity2 = slotNames.drinksQuantityTwo.value;
+    drinksQuantity3 = slotNames.drinksQuantityThree.value;
+
+    if (isNaN(drinksQuantity1)) {
+      drinksQuantity1 = 0;
+      coke = "";
+    } else {
+      coke = ", " + drinksQuantity1 + " Coke";
+    }
+    if (isNaN(drinksQuantity2)) {
+      drinksQuantity2 = 0;
+      sprite = "";
+    } else {
+      sprite = ", " + drinksQuantity2 + " Sprite";
+    }
+    if (isNaN(drinksQuantity3)) {
+      drinksQuantity3 = 0;
+      maaza = "";
+    } else {
+      maaza = ", " + drinksQuantity3 + " Maaza";
+    }
+
+    subtotal =
+      foodQuantity1 * 40 +
+      foodQuantity2 * 70 +
+      foodQuantity3 * 70 +
+      drinksQuantity1 * 20 +
+      drinksQuantity2 * 20 +
+      drinksQuantity3 * 15;
+    total = subtotal * 1.05;
+
+    const speakOutput = `So you have ordered${dosa}${rice}${noodles}${coke}${sprite}${maaza} and your Subtotal is ${subtotal} with a 5% GST, making the total ${total} . Do you confirm your order, if "NO", then please mention the food items and their quantity again.`;
+    let cardTitle = "Please Confirm the order";
+    let cardContent = `You have ordered:${dosa}${rice}${noodles}${coke}${sprite}${maaza}\nSubtotal: ${subtotal}\nGST 5%\nTotal: ${total}`;
+    return handlerInput.responseBuilder
+      .speak(speakOutput)
+      .withSimpleCard(cardTitle, cardContent)
+      .getResponse();
+  },
+};
+
+const FinishOrderingIntentHandler = {
+  canHandle(handlerInput) {
+    return (
+      Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
+      Alexa.getIntentName(handlerInput.requestEnvelope) ===
+        "FinishOrderingIntent"
+    );
+  },
+  handle(handlerInput) {
+    const speakOutput = `Thanks for ordering, your food will be delivered shortly.`;
+    let cardTitle = "Thanks for ordering";
+    let cardContent = `Your food is being prepared.\nTotal: Rs.${total}`;
+    return handlerInput.responseBuilder
+      .speak(speakOutput)
+      .withSimpleCard(cardTitle, cardContent)
+      .getResponse();
+  },
+};
 const HelpIntentHandler = {
   canHandle(handlerInput) {
     return (
@@ -215,7 +316,9 @@ exports.handler = Alexa.SkillBuilders.custom()
   .addRequestHandlers(
     LaunchRequestHandler,
     CustomerAuthenticationIntentHandler,
-    OrderEatableIntentHandler,
+    OrderFoodIntentHandler,
+    OrderDrinksIntentHandler,
+    FinishOrderingIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     FallbackIntentHandler,

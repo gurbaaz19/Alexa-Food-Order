@@ -46,12 +46,18 @@
                         }
                     ],
                     "samples": [
+                        "My mobile number is {Phone}",
+                        "My phone number is {Phone}",
+                        "{Phone}",
+                        "{Name}",
+                        "I am {Name}",
+                        "My name is {Name}",
                         "I am {Name} and contact number is {Phone}",
                         "My name is {Name} and my phone number is {Phone}"
                     ]
                 },
                 {
-                    "name": "OrderEatableIntent",
+                    "name": "OrderFoodIntent",
                     "slots": [
                         {
                             "name": "foodQuantityOne",
@@ -64,51 +70,85 @@
                         {
                             "name": "foodQuantityThree",
                             "type": "AMAZON.Ordinal"
-                        },
+                        }
+                    ],
+                    "samples": [
+                        "{foodQuantityThree} noodles",
+                        "{foodQuantityTwo} fried rice",
+                        "{foodQuantityOne} dosa",
+                        "Order {foodQuantityOne} Masala Dosa {foodQuantityThree} Chicken Noodles and {foodQuantityTwo} Chicken Fried Rice",
+                        "Order  {foodQuantityThree} Chicken Noodles {foodQuantityOne} Masala Dosa and {foodQuantityTwo} Chicken Fried Rice",
+                        "Order  {foodQuantityThree} Chicken Noodles {foodQuantityTwo} Chicken Fried Rice  and {foodQuantityOne} Masala Dosa",
+                        "Order {foodQuantityTwo} Chicken Fried Rice {foodQuantityThree} Chicken Noodles and {foodQuantityOne} Masala Dosa",
+                        "Order {foodQuantityTwo} Chicken Fried Rice {foodQuantityOne} Masala Dosa and {foodQuantityThree} Chicken Noodles",
+                        "Order {foodQuantityOne} Masala Dosa {foodQuantityTwo} Chicken Fried Rice and {foodQuantityThree} Chicken Noodles",
+                        "Order {foodQuantityThree} Chicken Noodles and {foodQuantityTwo} Chicken Fried Rice",
+                        "Order {foodQuantityTwo} Chicken Fried Rice and {foodQuantityThree} Chicken Noodles",
+                        "Order {foodQuantityThree} Chicken Noodles and {foodQuantityOne} masala dosa",
+                        "Order {foodQuantityOne} Masala Dosa and {foodQuantityThree} Chicken Noodles",
+                        "Order {foodQuantityTwo} Chicken Fried Rice and {foodQuantityOne} Masala Dosa",
+                        "Order {foodQuantityOne} Masala Dosa and {foodQuantityTwo} Chicken Fried Rice",
+                        "I would like to order {foodQuantityThree} Chicken Noodles",
+                        "{foodQuantityThree} Chicken Noodles",
+                        "Order {foodQuantityThree} Chicken Noodles",
+                        "I would like to order {foodQuantityTwo} Chicken Fried Rice",
+                        "{foodQuantityTwo} Chicken Fried Rice",
+                        "Order {foodQuantityTwo} Chicken Fried Rice",
+                        "I would like to order {foodQuantityOne} Masala Dosa",
+                        "{foodQuantityOne} Masala Dosa",
+                        "Order {foodQuantityOne} Masala Dosa"
+                    ]
+                },
+                {
+                    "name": "OrderDrinksIntent",
+                    "slots": [
                         {
-                            "name": "foodQuantityFour",
+                            "name": "drinksQuantityThree",
                             "type": "AMAZON.Ordinal"
                         },
                         {
-                            "name": "foodQuantityFive",
+                            "name": "drinksQuantityTwo",
                             "type": "AMAZON.Ordinal"
                         },
                         {
-                            "name": "foodQuantitySix",
-                            "type": "AMAZON.Ordinal"
-                        },
-                        {
-                            "name": "foodQuantitySeven",
-                            "type": "AMAZON.Ordinal"
-                        },
-                        {
-                            "name": "foodQuantityEight",
-                            "type": "AMAZON.Ordinal"
-                        },
-                        {
-                            "name": "foodQuantityNine",
+                            "name": "drinksQuantityOne",
                             "type": "AMAZON.Ordinal"
                         }
                     ],
                     "samples": [
-                        "{foodQuantityNine} Veg Noodles",
-                        "{foodQuantityEight} Chicken Noodles",
-                        "{foodQuantitySeven} Egg Noodles",
-                        "{foodQuantitySix} Veg Triple Rice",
-                        "{foodQuantityFive} Veg Fried Rice",
-                        "{foodQuantityFour} Chicken Triple Rice",
-                        "{foodQuantityThree} Chicken Fried Rice",
-                        "{foodQuantityTwo} Masala Dosa",
-                        "{foodQuantityOne} Plain Dosa",
-                        "I would like to order {foodQuantityNine} Veg Noodles",
-                        "I would like to order {foodQuantityEight} Chicken Noodles",
-                        "I would like to order {foodQuantitySeven} Egg Noodles ",
-                        "I would like to order {foodQuantitySix} Veg Triple Rice ",
-                        "I would like to order {foodQuantityFive} Veg Fried Rice",
-                        "I would like to order {foodQuantityFour} Chicken Triple Rice",
-                        "I would like to order {foodQuantityThree} Chicken Fried Rice",
-                        "I would like to order {foodQuantityTwo} Masala Dosa",
-                        "I would like to order {foodQuantityOne} Plain Dosa"
+                        "No Thanks",
+                        "no",
+                        "Order {drinksQuantityThree} Maaza and {drinksQuantityTwo} Sprite and {drinksQuantityOne} Coke ",
+                        "Order {drinksQuantityThree} Maaza and {drinksQuantityOne} Coke and {drinksQuantityTwo} Sprite ",
+                        "Order {drinksQuantityTwo} Sprite and {drinksQuantityThree} Maaza and {drinksQuantityOne} Coke ",
+                        "Order {drinksQuantityTwo} Sprite and {drinksQuantityOne} Coke and {drinksQuantityThree} Maaza",
+                        "Order {drinksQuantityOne} Coke and {drinksQuantityThree} Maaza and {drinksQuantityTwo} Sprite",
+                        "Order {drinksQuantityOne} Coke and {drinksQuantityTwo} Sprite and {drinksQuantityThree} Maaza",
+                        "Order {drinksQuantityThree} Maaza and {drinksQuantityTwo} Sprite",
+                        "Order {drinksQuantityTwo} Sprite and {drinksQuantityThree} Maaza",
+                        "Order {drinksQuantityThree} Maaza and {drinksQuantityOne} Coke",
+                        "Order {drinksQuantityOne} Coke and {drinksQuantityThree} Maaza",
+                        "Order {drinksQuantityTwo} Sprite and {drinksQuantityOne} Coke",
+                        "Order {drinksQuantityOne} Coke and {drinksQuantityTwo} Sprite",
+                        "I would like to order {drinksQuantityThree} Maaza",
+                        "Order {drinksQuantityThree} Maaza",
+                        "{drinksQuantityThree} Maaza",
+                        "I would like to order {drinksQuantityTwo} Sprite",
+                        "Order {drinksQuantityTwo} Sprite",
+                        "{drinksQuantityTwo} Sprite",
+                        "I would like to order {drinksQuantityOne} Coke",
+                        "Order {drinksQuantityOne} Coke",
+                        "{drinksQuantityOne} Coke"
+                    ]
+                },
+                {
+                    "name": "FinishOrderingIntent",
+                    "slots": [],
+                    "samples": [
+                        "thanks its okay",
+                        "i confirm",
+                        "sure",
+                        "yes"
                     ]
                 }
             ],
@@ -142,7 +182,7 @@
                     ]
                 },
                 {
-                    "name": "OrderEatableIntent",
+                    "name": "OrderFoodIntent",
                     "confirmationRequired": false,
                     "prompts": {},
                     "slots": [
@@ -205,9 +245,16 @@
                                     ]
                                 }
                             ]
-                        },
+                        }
+                    ]
+                },
+                {
+                    "name": "OrderDrinksIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
                         {
-                            "name": "foodQuantityFour",
+                            "name": "drinksQuantityThree",
                             "type": "AMAZON.Ordinal",
                             "confirmationRequired": false,
                             "elicitationRequired": false,
@@ -215,7 +262,7 @@
                             "validations": [
                                 {
                                     "type": "isInSet",
-                                    "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                                    "prompt": "Slot.Validation.1347446809009.1596550938143.1642954420458",
                                     "values": [
                                         "1",
                                         "2",
@@ -227,7 +274,7 @@
                             ]
                         },
                         {
-                            "name": "foodQuantityFive",
+                            "name": "drinksQuantityTwo",
                             "type": "AMAZON.Ordinal",
                             "confirmationRequired": false,
                             "elicitationRequired": false,
@@ -235,7 +282,7 @@
                             "validations": [
                                 {
                                     "type": "isInSet",
-                                    "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                                    "prompt": "Slot.Validation.1347446809009.611987237661.802697219965",
                                     "values": [
                                         "1",
                                         "2",
@@ -247,7 +294,7 @@
                             ]
                         },
                         {
-                            "name": "foodQuantitySix",
+                            "name": "drinksQuantityOne",
                             "type": "AMAZON.Ordinal",
                             "confirmationRequired": false,
                             "elicitationRequired": false,
@@ -255,67 +302,7 @@
                             "validations": [
                                 {
                                     "type": "isInSet",
-                                    "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
-                                    "values": [
-                                        "1",
-                                        "2",
-                                        "3",
-                                        "4",
-                                        "5"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "name": "foodQuantitySeven",
-                            "type": "AMAZON.Ordinal",
-                            "confirmationRequired": false,
-                            "elicitationRequired": false,
-                            "prompts": {},
-                            "validations": [
-                                {
-                                    "type": "isInSet",
-                                    "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
-                                    "values": [
-                                        "1",
-                                        "2",
-                                        "3",
-                                        "4",
-                                        "5"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "name": "foodQuantityEight",
-                            "type": "AMAZON.Ordinal",
-                            "confirmationRequired": false,
-                            "elicitationRequired": false,
-                            "prompts": {},
-                            "validations": [
-                                {
-                                    "type": "isInSet",
-                                    "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
-                                    "values": [
-                                        "1",
-                                        "2",
-                                        "3",
-                                        "4",
-                                        "5"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "name": "foodQuantityNine",
-                            "type": "AMAZON.Ordinal",
-                            "confirmationRequired": false,
-                            "elicitationRequired": false,
-                            "prompts": {},
-                            "validations": [
-                                {
-                                    "type": "isInSet",
-                                    "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                                    "prompt": "Slot.Validation.1347446809009.77581953735.1376445142545",
                                     "values": [
                                         "1",
                                         "2",
@@ -337,6 +324,10 @@
                 "variations": [
                     {
                         "type": "PlainText",
+                        "value": "Okay, your phone number is {Phone} , but what is your name?"
+                    },
+                    {
+                        "type": "PlainText",
                         "value": "What is your name?"
                     }
                 ]
@@ -346,12 +337,43 @@
                 "variations": [
                     {
                         "type": "PlainText",
+                        "value": "{Name} , what is your mobile number?"
+                    },
+                    {
+                        "type": "PlainText",
                         "value": "What is your mobile number?"
                     }
                 ]
             },
             {
                 "id": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "any item cannot exceed a number of five"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1347446809009.1596550938143.1642954420458",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "any item cannot exceed a number of five"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1347446809009.611987237661.802697219965",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "any item cannot exceed a number of five"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1347446809009.77581953735.1376445142545",
                 "variations": [
                     {
                         "type": "PlainText",

@@ -1,0 +1,365 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "flaming foods",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "CustomerAuthenticationIntent",
+          "slots": [
+            {
+              "name": "Name",
+              "type": "AMAZON.FirstName",
+              "samples": [
+                "{Name}",
+                "I am {Name}",
+                "my name is {Name}"
+              ]
+            },
+            {
+              "name": "Phone",
+              "type": "AMAZON.PhoneNumber",
+              "samples": [
+                "My mobile number is {Phone}",
+                "My phone number is {Phone}",
+                "{Phone}"
+              ]
+            }
+          ],
+          "samples": [
+            "I am {Name} and contact number is {Phone}",
+            "My name is {Name} and my phone number is {Phone}"
+          ]
+        },
+        {
+          "name": "OrderEatableIntent",
+          "slots": [
+            {
+              "name": "foodQuantityOne",
+              "type": "AMAZON.Ordinal"
+            },
+            {
+              "name": "foodQuantityTwo",
+              "type": "AMAZON.Ordinal"
+            },
+            {
+              "name": "foodQuantityThree",
+              "type": "AMAZON.Ordinal"
+            },
+            {
+              "name": "foodQuantityFour",
+              "type": "AMAZON.Ordinal"
+            },
+            {
+              "name": "foodQuantityFive",
+              "type": "AMAZON.Ordinal"
+            },
+            {
+              "name": "foodQuantitySix",
+              "type": "AMAZON.Ordinal"
+            },
+            {
+              "name": "foodQuantitySeven",
+              "type": "AMAZON.Ordinal"
+            },
+            {
+              "name": "foodQuantityEight",
+              "type": "AMAZON.Ordinal"
+            },
+            {
+              "name": "foodQuantityNine",
+              "type": "AMAZON.Ordinal"
+            }
+          ],
+          "samples": [
+            "{foodQuantityNine} Veg Noodles",
+            "{foodQuantityEight} Chicken Noodles",
+            "{foodQuantitySeven} Egg Noodles",
+            "{foodQuantitySix} Veg Triple Rice",
+            "{foodQuantityFive} Veg Fried Rice",
+            "{foodQuantityFour} Chicken Triple Rice",
+            "{foodQuantityThree} Chicken Fried Rice",
+            "{foodQuantityTwo} Masala Dosa",
+            "{foodQuantityOne} Plain Dosa",
+            "I would like to order {foodQuantityNine} Veg Noodles",
+            "I would like to order {foodQuantityEight} Chicken Noodles",
+            "I would like to order {foodQuantitySeven} Egg Noodles ",
+            "I would like to order {foodQuantitySix} Veg Triple Rice ",
+            "I would like to order {foodQuantityFive} Veg Fried Rice",
+            "I would like to order {foodQuantityFour} Chicken Triple Rice",
+            "I would like to order {foodQuantityThree} Chicken Fried Rice",
+            "I would like to order {foodQuantityTwo} Masala Dosa",
+            "I would like to order {foodQuantityOne} Plain Dosa"
+          ]
+        }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "CustomerAuthenticationIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "Name",
+              "type": "AMAZON.FirstName",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1558307938109.771538562712"
+              }
+            },
+            {
+              "name": "Phone",
+              "type": "AMAZON.PhoneNumber",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1558307938109.1502629844564"
+              }
+            }
+          ]
+        },
+        {
+          "name": "OrderEatableIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "foodQuantityOne",
+              "type": "AMAZON.Ordinal",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                  "values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "foodQuantityTwo",
+              "type": "AMAZON.Ordinal",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                  "values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "foodQuantityThree",
+              "type": "AMAZON.Ordinal",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                  "values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "foodQuantityFour",
+              "type": "AMAZON.Ordinal",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                  "values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "foodQuantityFive",
+              "type": "AMAZON.Ordinal",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                  "values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "foodQuantitySix",
+              "type": "AMAZON.Ordinal",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                  "values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "foodQuantitySeven",
+              "type": "AMAZON.Ordinal",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                  "values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "foodQuantityEight",
+              "type": "AMAZON.Ordinal",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                  "values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "foodQuantityNine",
+              "type": "AMAZON.Ordinal",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1586149394731.383079780266.1484182020936",
+                  "values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.1558307938109.771538562712",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your name?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1558307938109.1502629844564",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your mobile number?"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1586149394731.383079780266.1484182020936",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "any item cannot exceed a number of five"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "9"
+}
